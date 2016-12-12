@@ -1,10 +1,10 @@
 package countrycorrelation;
 
-import java.io.File;
+import org.hamcrest.core.StringStartsWith;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 
 /**
@@ -12,13 +12,24 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<Country> countryList = new ArrayList<>();
+        HashMap<String,  ArrayList<Country>> realList = new HashMap<>();
         Country.load1();
+        System.out.format("%s,", realList.containsKey("a"));
 
 
-        }
 
 
+
+
+
+
+
+    }
 }
+
+
+
 
 
 

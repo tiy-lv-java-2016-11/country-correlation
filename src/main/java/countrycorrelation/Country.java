@@ -1,7 +1,5 @@
 package countrycorrelation;
 
-import jodd.json.JsonParser;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -12,6 +10,7 @@ import java.util.*;
 public class Country {
     private String name;
     private String abbreviation;
+
 
 
     public Country(String name) throws FileNotFoundException {
@@ -53,35 +52,54 @@ public class Country {
         Scanner fileScanner = new Scanner(file);
         while (fileScanner.hasNext()) {
             String nextLine = fileScanner.nextLine();
-            String[] columns = nextLine.split("\\|");
-            Country country = new Country(columns[1]);
+            String[] column = nextLine.split("\\|");
+            Country country = new Country(column[1]);
             countryList.add(country);
-            System.out.format("\n%s", countryList);
+
         }
         return countryList;
     }
 
+    //This is where my brain stopped functioning usefully.
+    //I will work on it more tomorrow morning and afternoon, sorry for not completing it.
+
+    public ArrayList<String> loadKey() {
+        ArrayList<String> keyList = new ArrayList<>();
+        keyList.add("a");
+        keyList.add("b");
+        keyList.add("c");
+        return keyList;
+    }
+
+
+
+
+
+
+
     public static HashMap<String, ArrayList<Country>> load1() throws FileNotFoundException {
-        HashMap<String, ArrayList<Country>> abbreviationList = new HashMap<>();
-        Scanner key = new Scanner(System.in);
-        String theKey = key.nextLine();
+        HashMap<String, ArrayList<Country>> realList = new HashMap<>();
+        int a = 0;
+        while(a < Country.loadList().size()){
+            Country.loadList();
+            realList.put("", loadList());
+            a++;
+            Scanner scanner = new Scanner("countries.txt");
+            String nextLine = scanner.nextLine();
+            String[] column = nextLine.split("\\|");
+            String checkSub = nextLine.substring(1);
 
-        File file2 = new File("countries.txt");
-        Scanner fileScanner2 = new Scanner(file2);
-        while (fileScanner2.hasNext()) {
-            String nextLine2 = fileScanner2.nextLine();
-            String[] theValue = nextLine2.split("\\|");
-            Country country1 = new Country(theValue[1]);
-            abbreviationList.put(theKey, Country.loadList());
-            if((theKey.matches(theValue[1]))){
-                System.out.format(theValue[1]);
 
-            }
 
         }
-        return abbreviationList;
+        return realList;
     }
+
+
+
+
 }
+
 
 
 
