@@ -1,0 +1,8 @@
+TP|east timor
+EC|ecuador
+EG|egypt
+SV|el salvador
+GQ|equatorial guinea
+ER|eritrea
+EE|estonia
+ET|ethiopia

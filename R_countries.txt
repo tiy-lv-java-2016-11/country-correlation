@@ -1,0 +1,4 @@
+RE|reunion
+RO|romania
+RU|russian federation
+RW|rwanda
