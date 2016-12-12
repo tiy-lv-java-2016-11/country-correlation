@@ -25,7 +25,7 @@ public class Main {
             throw new Exception("Please enter a single letter");
         }
         else {
-            Country.saveSortFile(alphaCountries, letter);
+            Country.saveJsonSortFile(alphaCountries, letter);
         }
 
     }

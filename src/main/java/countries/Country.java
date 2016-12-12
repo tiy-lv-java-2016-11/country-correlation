@@ -1,5 +1,7 @@
 package countries;
 
+import jodd.json.JsonSerializer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -101,6 +103,28 @@ public class Country {
         for (Country country : list){
             fw.append(String.format("%s|%s\n", country.getAbbr(), country.getName()));
         }
+        fw.close();
+    }
+
+    /* *
+     * Saves the ArrayList of Countries (as a single JSON object)
+     * starting with a chosen letter to a file.
+     * @param countries HashMap of ArrayLists of Country objects sorted by starting letter
+     * @param letter Single letter choosing which ArrayList of Countries to save
+     * */
+    public static void saveJsonSortFile(HashMap<String, ArrayList<Country>> countries, String letter) throws Exception {
+        String filename = letter.toUpperCase() + "_countries.txt";
+        ArrayList<Country> list = countries.get(letter.toLowerCase());
+        if (list == null){
+            throw new Exception("No countries exist for that letter");
+        }
+
+        JsonSerializer serializer = new JsonSerializer();
+        String json = serializer.serialize(list);
+
+        File f = new File(filename);
+        FileWriter fw = new FileWriter(f);
+        fw.write(json);
         fw.close();
     }
 
