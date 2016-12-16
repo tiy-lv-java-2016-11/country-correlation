@@ -38,10 +38,12 @@ public class Country {
     public String toString() {
         return String.format("%s %s", abbreviation, name);
     }
+
     public static ArrayList<Country> readCountries() throws FileNotFoundException {
         ArrayList<Country> countryList = new ArrayList<>();
         File f = new File("/Users/sparatan117/Projects/country-correlation/countries.txt");
         Scanner scanner = new Scanner(f);
+
         while (scanner.hasNext()){
             String line = scanner.nextLine();
             String[] columns = line.split("\\|");
@@ -50,20 +52,21 @@ public class Country {
         }
         return countryList;
     }
+
     public static HashMap<String, ArrayList<Country>> makeHash() throws FileNotFoundException {
         HashMap<String, ArrayList<Country>> countries = new HashMap<>();
-        ArrayList<Country> thelist = Country.readCountries();
-        for(Country country : thelist){
+        ArrayList<Country> countryList = Country.readCountries();
+
+        for(Country country : countryList){
             String letter = String.valueOf(country.getName().charAt(0));
             ArrayList<Country> aLetter = countries.get(letter);
+
             if(aLetter == null){
                 aLetter = new ArrayList<>();
-                aLetter.add(country);
                 countries.put(letter, aLetter);
             }
-            else{
-                aLetter.add(country);
-            }
+            aLetter.add(country);
+
         }
         return countries;
     }
